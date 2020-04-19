@@ -1,0 +1,26 @@
+{
+  "name": "chartwiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "repository": "git+https://github.com/ofersarid/chartwiz.git",
+  "author": "ofersarid <ofersarid@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ofersarid/chartwiz/issues"
+  },
+  "homepage": "https://github.com/ofersarid/chartwiz#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "sass": "^1.26.3"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/runtime": "^7.9.2"
+  }
+}
