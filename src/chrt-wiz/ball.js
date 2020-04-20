@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
 
-const Ball = ({ itm, triggerValueTextOnClick }) => {
-  const [showValueText, setShowValueText] = useState(!triggerValueTextOnClick);
+const Ball = ({ itm }) => {
+  const [showValueText, setShowValueText] = useState(false);
 
   const toggleShowValue = () => {
     setShowValueText(!showValueText);
@@ -15,12 +15,14 @@ const Ball = ({ itm, triggerValueTextOnClick }) => {
         left: `${itm.v}%`,
         background: itm.c
       }}
-      onClick={triggerValueTextOnClick ? toggleShowValue :  () => {}}
+      onClick={toggleShowValue}
     >
-      <label className={cx({
-        show: showValueText
-      })} >{itm.v}%</label >
-    </div >
+      <div className={cx('tip', {
+        show: showValueText,
+        right: itm.v < 50,
+        left: itm.v >= 50,
+      })}>{itm.t}</div >
+    </div>
   );
 };
 

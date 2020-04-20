@@ -16,21 +16,26 @@ const getValueText = v => {
 const getValueColor = v => {
   switch (true) {
     case v < 80:
-      return 'red';
+      return '#d51b48';
     case v < 90:
-      return 'orange';
+      return '#ffc551';
     default:
-      return 'green';
+      return '#72d572';
   }
 };
 
 const generateData = (init) => {
   const data = [];
   for (let i = 0; i < 20; i++) {
-    const v = init ? 0 : Math.floor(Math.min(Math.abs(Math.random() + 0.5), 0.99) * 100);
+    const v = init ? 0 : Math.floor(Math.min(Math.abs(Math.random() + 0.3), 0.99) * 100);
     data.push({
       v,
-      t: getValueText(v),
+      t: (
+        <div >
+          <div >{v}%</div >
+          <div >{getValueText(v)}</div >
+        </div >
+      ),
       c: getValueColor(v),
       l: `Service ${i + 1}`
     })
