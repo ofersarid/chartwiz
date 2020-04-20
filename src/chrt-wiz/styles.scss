@@ -1,0 +1,75 @@
+$ease: cubic-bezier(0.23, 1, 0.32, 1);
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+%fadeIn {
+  animation: fadeIn 1s forwards;
+  animation-timing-function: $ease;
+}
+
+
+%animate {
+  transition: 2s $ease;
+}
+
+.cwiz-wrapper {
+  border: 1px solid red;
+  padding: 20px;
+}
+
+.cwiz-wrapper ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.cwiz-wrapper ul > li {
+  height: 30px;
+  width: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: red;
+  position: absolute;
+  left: 0;
+  transform: translateX(-50%);
+  @extend %animate;
+  cursor: pointer;
+
+  label {
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translate(100%, -50%);
+    text-align: center;
+    opacity: 0;
+    @extend %animate;
+    transition-duration: 0.5s;
+
+    &.show {
+      opacity: 1;
+      transition-duration: 1s;
+    }
+  }
+}

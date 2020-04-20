@@ -1,74 +1,68 @@
-const dummyData = [{
-  x: 5,
-  y: 2
-}, {
-  x: 1,
-  y: 1
-}];
+import React, { useState, useEffect } from 'react';
+import ChrtWiz from './chrt-wiz/chrt-wiz';
+// import styles from './styles.scss';
 
-class AppRoot extends HTMLElement {
-  constructor() {
-    super();
-    this.shadow = this.attachShadow({ mode: 'open' });
+const getValueText = v => {
+  switch (true) {
+    case v < 80:
+      return 'notice';
+    case v < 90:
+      return 'healthy';
+    default:
+      return 'optimal';
+  }
+};
+
+const getValueColor = v => {
+  switch (true) {
+    case v < 80:
+      return 'red';
+    case v < 90:
+      return 'orange';
+    default:
+      return 'green';
+  }
+};
+
+const generateData = () => {
+  const data = [];
+  for (let i = 0; i < 20; i++) {
+    const v = Math.floor(Math.min(Math.abs(Math.random() + 0.5), 0.99) * 100);
+    data.push({
+      v,
+      t: getValueText(v),
+      c: getValueColor(v),
+    })
+  }
+  return data;
+};
+
+const App = () => {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(generateData());
+
+  const promise = () => new Promise(resolve => {
+    setTimeout(() => {
+      resolve(generateData());
+    }, 1000);
+  });
+
+  async function fetchData() {
+    setLoading(true);
+    const data = await promise();
+    setData(data);
+    setLoading(false);
   }
 
-  static get observedAttributes() {
-    return ["loading", "data"];
-  }
+  useEffect(() => {
+    setInterval(fetchData, 5000);
+  }, []);
 
-  attributeChangedCallback(attrName, oldVal, newVal) {
-    this.render();
-  }
+  return (
+    <div >
+      <ChrtWiz data={data} triggerValueTextOnClick />
+    </div >
+  );
+};
 
-  get loading() {
-    return JSON.parse(this.getAttribute("loading"));
-  }
-
-  set loading(v) {
-    this.setAttribute("loading", JSON.stringify(v));
-  }
-
-  get data() {
-    return JSON.parse(this.getAttribute("data"));
-  }
-
-  set data(v) {
-    this.setAttribute("data", JSON.stringify(v));
-  }
-
-  async fetchData() {
-    this.loading = true;
-    const promise = () => new Promise(resolve => {
-      setTimeout(() => {
-        resolve(dummyData);
-      }, 3000);
-    });
-    this.data = await promise();
-    this.loading = false;
-  }
-
-  async connectedCallback() {
-    await this.fetchData();
-  }
-
-  disconnectedCallback() {
-  }
-
-  render() {
-    const html = `
-      <style>
-          #root {
-            width: 100%;
-            height: 100%;
-            background: green;
-          }
-      </style>
-      <div id="root" >
-          <chart-wiz loading=${this.loading} data=${this.data} />
-      </div>
-    `;
-    this.shadow.innerHTML = html;
-  }
-}
-
-customElements.define('app-root', AppRoot);
+export default App;
