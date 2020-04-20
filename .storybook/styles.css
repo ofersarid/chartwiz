@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: white;
+}
+
+body > div:last-of-type {
+  background: black;
+  color: white;
+}
