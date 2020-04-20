@@ -24,14 +24,15 @@ const getValueColor = v => {
   }
 };
 
-const generateData = () => {
+const generateData = (init) => {
   const data = [];
   for (let i = 0; i < 20; i++) {
-    const v = Math.floor(Math.min(Math.abs(Math.random() + 0.5), 0.99) * 100);
+    const v = init ? 0 : Math.floor(Math.min(Math.abs(Math.random() + 0.5), 0.99) * 100);
     data.push({
       v,
       t: getValueText(v),
       c: getValueColor(v),
+      l: `Service ${i + 1}`
     })
   }
   return data;
@@ -39,7 +40,7 @@ const generateData = () => {
 
 const App = () => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(generateData());
+  const [data, setData] = useState(generateData(true));
 
   const promise = () => new Promise(resolve => {
     setTimeout(() => {
@@ -55,12 +56,15 @@ const App = () => {
   }
 
   useEffect(() => {
-    setInterval(fetchData, 5000);
+    setTimeout(() => {
+      fetchData();
+      setInterval(fetchData, 5000);
+    }, 0)
   }, []);
 
   return (
     <div >
-      <ChrtWiz data={data} triggerValueTextOnClick />
+      <ChrtWiz data={data} triggerValueTextOnClick className="my-chart" />
     </div >
   );
 };
