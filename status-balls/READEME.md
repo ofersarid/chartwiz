@@ -1,2 +1,2 @@
 # Delta UI - react status balls
-Display percentage status for multiple data points.
+Demo and docs [here](https://ofersarid.github.io/delta-ui/?path=/story/status-balls--play-ground) 
