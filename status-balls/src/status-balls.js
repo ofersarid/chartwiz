@@ -3,7 +3,7 @@ import Ball from './ball';
 import cx from 'classnames';
 import styles from './styles.scss';
 
-const ChrtWiz = ({ data, triggerValueTextOnClick, className }) => (
+const StatusBalls = ({ data, triggerValueTextOnClick, className }) => (
   <div className={cx('cwiz-wrapper', [className])} >
     <ul >
       {data.map((itm, i) => (
@@ -16,4 +16,4 @@ const ChrtWiz = ({ data, triggerValueTextOnClick, className }) => (
   </div >
 );
 
-export default ChrtWiz;
+export default StatusBalls;
