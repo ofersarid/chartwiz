@@ -1,18 +1,18 @@
 {
   "name": "@delta-band/react-status-balls",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "./build/index.js",
   "license": "ISC",
   "scripts": {
     "build": "webpack",
-    "publish": "yarn build && npm publish --access public"
+    "publish": "npm publish --access public"
   },
   "repository": "https://github.com/ofersarid/delta-ui/tree/master/status-balls",
   "author": "Ofer Sarid <ofersarid@gmail.com>",
   "bugs": {
     "url": "https://github.com/ofersarid/delta-ui/issues"
   },
-  "homepage": "https://github.com/ofersarid/delta-ui/tree/master/status-balls#readme",
+  "homepage": "https://ofersarid.github.io/delta-ui/?path=/story/status-balls--play-ground",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
