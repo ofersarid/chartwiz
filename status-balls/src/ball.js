@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
 
-const Ball = ({ itm }) => {
+const Ball = ({ itm, loading, clickCallBack }) => {
   const [showValueText, setShowValueText] = useState(false);
 
   const toggleShowValue = () => {
     setShowValueText(!showValueText);
+    clickCallBack(itm);
   };
 
   return (
@@ -13,7 +14,8 @@ const Ball = ({ itm }) => {
       className="ball"
       style={{
         left: `${itm.v}%`,
-        background: itm.c
+        background: loading ? '#EBEBEB' : itm.c,
+        pointerEvents: loading ? 'none' : 'all',
       }}
       onClick={toggleShowValue}
     >

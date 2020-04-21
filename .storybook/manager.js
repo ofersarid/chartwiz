@@ -53,5 +53,5 @@ addons.setConfig({
    * id to select an addon panel
    * @type {String}
    */
-  selectedPanel: '@storybook/addon-knobs/register',
+  selectedPanel: undefined,
 });

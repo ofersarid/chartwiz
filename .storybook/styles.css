@@ -5,7 +5,19 @@ body {
   background: white;
 }
 
-body > div:last-of-type {
-  background: black;
-  color: white;
+.install-note {
+  font-family: monospace;
+  font-size: 16px;
+  background: #eeeeee;
+  padding: 20px;
+  margin: 40px 20px 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
 }

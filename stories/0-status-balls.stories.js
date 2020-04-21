@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
+import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 // import StatusBalls from '@delta-band/react-status-balls';
-import StatusBalls from '../status-balls';
+import StatusBalls from '../status-balls/src';
 
 export default {
   title: 'Status Balls',
-  component: StatusBalls
+  component: StatusBalls,
+  decorators: [withKnobs]
 };
 
 const getValueText = v => {
@@ -32,7 +34,7 @@ const getValueColor = v => {
 
 const generateData = (init) => {
   const data = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 15; i++) {
     const v = init ? 0 : Math.floor(Math.min(Math.abs(Math.random() + 0.3), 0.99) * 100);
     data.push({
       v,
@@ -40,7 +42,6 @@ const generateData = (init) => {
         <div >
           <div >{v}%</div >
           <div >{getValueText(v)}</div >
-          <h1>Hello</h1>
         </div >
       ),
       c: getValueColor(v),
@@ -57,24 +58,28 @@ const promise = () => new Promise(resolve => {
 });
 
 export const PlayGround = () => {
+
   const [data, setData] = useState(generateData(true));
   const [loading, setLoading] = useState(true);
 
   async function fetchData() {
-    setLoading(true);
     const data = await promise();
     setData(data);
     setLoading(false);
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      fetchData();
+    setTimeout(async () => {
+      await fetchData();
+      setLoading(false);
       setInterval(fetchData, 5000);
     }, 0)
   }, []);
 
   return (
-    <StatusBalls data={data} className="my-chart" />
+    <Fragment>
+      <div className="install-note">yarn add @delta-band/react-status-balls</div>
+      <StatusBalls loading={loading} className="my-chart" data={data} ballClickCallBack={action('ball-click')} />
+    </Fragment>
   );
 };

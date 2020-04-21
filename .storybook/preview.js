@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
 // import { addDecorator } from '@storybook/react';
+import './styles.css';
 
-// addDecorator(storyFn => <div style={{ textAlign: 'center' }} >{storyFn()}</div >);
+// addDecorator(withPropsTable);
