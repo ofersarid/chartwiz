@@ -9,13 +9,13 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o docs"
   },
-  "repository": "git+https://github.com/ofersarid/chartwiz.git",
+  "repository": "git+https://github.com/ofersarid/delta-ui.git",
   "author": "ofersarid <ofersarid@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ofersarid/chartwiz/issues"
+    "url": "https://github.com/ofersarid/delta-ui/issues"
   },
-  "homepage": "https://github.com/ofersarid/chartwiz#readme",
+  "homepage": "https://github.com/ofersarid/delta-ui#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
