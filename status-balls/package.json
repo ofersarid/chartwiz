@@ -7,7 +7,12 @@
     "build": "webpack",
     "publish": "yarn build && npm publish --access public "
   },
-  "author": "ofer-sarid",
+  "repository": "git+https://github.com/ofersarid/delta-ui.git",
+  "author": "Ofer Sarid <ofersarid@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/ofersarid/delta-ui/issues"
+  },
+  "homepage": "https://github.com/ofersarid/delta-ui#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
