@@ -57,7 +57,7 @@ const promise = () => new Promise(resolve => {
   }, 1000);
 });
 
-export const PlayGround = () => {
+export const Playground = () => {
 
   const [data, setData] = useState(generateData(true));
   const [loading, setLoading] = useState(true);

@@ -39,7 +39,14 @@ StatusBalls.propTypes = {
     c: PropTypes.string.isRequired,
     l: PropTypes.string.isRequired,
     t: PropTypes.any,
-  }))
+  })),
+
+  /** Callback function for when clicking on a ball */
+  ballClickCallBack: PropTypes.func,
+};
+
+StatusBalls.defaultProps = {
+  loading: false,
 };
 
 export default StatusBalls;
